@@ -4,3 +4,9 @@
 
 .rules{max-width:900px}.rules h2{margin-top:24px;margin-bottom:9px}.rules ul{margin-top:6px;padding-left:24px}.rules li{margin:5px 0}.rules-examples{display:flex;flex-direction:column;gap:10px;margin-top:10px}.rules-example{display:grid;grid-template-columns:245px 1fr;gap:16px;align-items:center;padding:12px 14px;background:rgb(34 34 34 / .84);border:1px solid var(--border);border-radius:8px}.example-cards{display:flex;align-items:center;justify-content:center;gap:8px;min-height:100px}.example-cards img{width:61px;height:100px;object-fit:cover;border-radius:4px;box-shadow:0 2px 6px rgb(0 0 0 / .35)}.example-symbol{font-size:1.25rem;color:var(--muted);font-weight:600}.rules-example strong{color:#f0f0f0}.rules-example p{margin:5px 0 0;color:#ddd}.rules-source{margin-top:26px;color:var(--muted);font-size:.85rem;text-align:center}.rules-source em{font-style:italic}
 @media(max-width:650px){.rules-example{grid-template-columns:1fr;gap:9px}.example-cards{min-height:100px}.rules-example p{margin-top:5px}}
+.kukis {
+  text-align: center;
+  font-size: 0.75rem;
+  opacity: 0.45;
+  margin: 40px 0 12px;
+}
