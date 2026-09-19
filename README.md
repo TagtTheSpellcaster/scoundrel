@@ -1,22 +1,37 @@
 # Scoundrel
 
-Versione 1.0.1 del gioco di carte Scoundrel, pensata per GitHub Pages.
+Una versione web del gioco di carte solitario Scoundrel.
 
-## Avvio locale
+[Gioca online]
 
-Fare doppio clic su `scoundrel.bat`, oppure eseguire:
+## Come si gioca
 
-```text
-python -m http.server 8000
-```
+Breve descrizione del gioco e obiettivo.
 
-e aprire `http://localhost:8000`.
+## Regole
 
-## Struttura
+Le regole complete sono disponibili nella pagina Regole.
 
-- `index.html`: interfaccia del gioco
-- `rules.html`: regole in italiano
-- `js/deck.js`: definizione e generazione delle 44 carte
-- `js/game.js`: motore del gioco
-- `js/ui.js`: interfaccia e interazioni
-- `css/style.css`: stile
+[Leggi le regole]
+
+## Caratteristiche
+
+- Gioco completo in browser
+- Nessuna installazione
+- Nessun server necessario
+- Carte originali di Scoundrel
+- Interfaccia in italiano
+- ...
+  
+## Crediti
+
+Scoundrel è un gioco di Zach Gage e Kurt Bieg.
+Questa è un'implementazione web non ufficiale.
+
+## Licenza
+
+Il codice originale di questa implementazione è distribuito
+con licenza MIT.
+
+Scoundrel, le sue regole, il nome e le illustrazioni originali
+sono proprietà dei rispettivi autori/titolari.
