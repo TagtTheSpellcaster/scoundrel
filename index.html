@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scoundrel</title>
+  <link rel="stylesheet" href="css/style.css?v=1.1.1">
+</head>
+<body>
+<main id="app">
+  <header>
+    <h1>Scoundrel</h1>
+    <p>Gioco di carte roguelike per giocatore singolo</p>
+    <nav><a href="rules.html">Regole</a></nav>
+  </header>
+  <section class="topbar">
+    <div class="stat"><span>Carte nel dungeon</span><strong id="dungeon-count">44</strong></div>
+    <div class="health-bar" id="health-bar" role="progressbar" aria-label="Salute" aria-valuemin="0" aria-valuemax="20" aria-valuenow="20"><span id="health">20/20</span></div>
+    <div class="controls"><button id="new-game" type="button">Nuova partita</button><button id="avoid" type="button">Evita stanza</button></div>
+  </section>
+  <div id="message" class="message" aria-live="polite"><div id="message-text"></div><div id="score-message" class="score-message" hidden></div></div>
+  <section><h2>Stanza <span class="turn">Turno <span id="turn">1</span></span></h2><div id="room" class="room"></div></section>
+  <section id="card-info" class="card-info" aria-live="polite" hidden><h3 id="card-info-title"></h3><p id="card-info-type"></p><p id="card-info-text"></p></section>
+  <section class="lower">
+    <div><h2>Arma</h2><div id="weapon" class="pile"></div></div>
+    <div><h2>Ultimo mostro</h2><div id="last-monster" class="pile"></div></div>
+  </section>
+</main>
+<div id="combat-modal" class="modal" hidden>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="combat-title">
+    <h2 id="combat-title">Scegli un’azione</h2><div id="combat-card"></div><p id="action-description"></p>
+    <button id="barehanded" type="button">Combatti a mani nude</button>
+    <button id="weapon-fight" type="button">Usa l’arma</button>
+    <button id="drink-potion" type="button">Bevi</button>
+    <button id="equip-weapon" type="button">Impugna</button>
+    <button id="close-modal" type="button" class="secondary">Annulla</button>
+  </div>
+</div>
+<script type="module" src="js/ui.js?v=1.1.1"></script>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scoundrel — Regole</title>
+  <link rel="stylesheet" href="css/style.css?v=1.2.0">
+  <style>
+    .rules {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 24px 56px;
+    }
+
+    .rules header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .rules h1 {
+      margin-bottom: 4px;
+    }
+
+    .rules header p {
+      margin: 4px 0;
+    }
+
+    .rules section {
+      margin: 0 0 30px;
+    }
+
+    .rules h2 {
+      margin: 0 0 10px;
+    }
+
+    .rules h3 {
+      margin: 22px 0 8px;
+    }
+
+    .rules p,
+    .rules li {
+      line-height: 1.55;
+    }
+
+    .rules ul,
+    .rules ol {
+      padding-left: 24px;
+    }
+
+    .rules .example {
+      margin: 18px 0 24px;
+      padding: 16px 18px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 8px;
+      background: rgba(0,0,0,.24);
+    }
+
+    .rules .example-title {
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .rules .cards {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 12px 0;
+      flex-wrap: wrap;
+    }
+
+    .rules .card-example {
+      width: 61px;
+      height: 100px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    .rules .arrow {
+      font-size: 1.15rem;
+      opacity: .8;
+    }
+
+    .rules .calculation {
+      margin: 8px 0 0;
+      font-weight: 600;
+    }
+
+    .rules .note {
+      opacity: .88;
+      font-size: .95rem;
+    }
+
+    .rules .important {
+      padding-left: 14px;
+      border-left: 3px solid rgba(255,255,255,.35);
+    }
+  </style>
+</head>
+
+<body>
+<main class="rules">
+
+  <header>
+    <h1>Scoundrel</h1>
+    <p>Regole</p>
+    <p><a href="index.html">Torna al gioco</a></p>
+  </header>
+
+  <section>
+    <h2>1. Preparazione</h2>
+    <p>
+      Scoundrel usa un normale mazzo di carte francesi. Si rimuovono i due Joker,
+      tutte le figure rosse (Fanti, Donne e Re di Cuori e Quadri) e i due Assi rossi.
+      Restano 44 carte: 13 di Fiori, 13 di Picche, 9 di Quadri e 9 di Cuori.
+    </p>
+    <p>
+      Mescola le 44 carte e disponile coperte: questo è il <strong>Dungeon</strong>.
+      La Salute iniziale è <strong>20</strong>.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Tipi di carta</h2>
+    <ul>
+      <li>
+        <strong>Fiori e Picche — Mostri:</strong>
+        il valore della carta indica quanti danni il mostro infligge quando viene
+        combattuto. Quando si combatte un mostro, il mostro viene sconfitto e
+        scartato, ma prima infligge al giocatore un numero di danni pari al suo
+        valore, salvo che un’arma ne riduca l’entità.
+        Le carte numerate valgono il numero indicato; Fante = 11, Donna = 12,
+        Re = 13, Asso = 14.
+      </li>
+      <li>
+        <strong>Quadri — Armi:</strong>
+        un’arma riduce i danni inflitti da un mostro. Il suo valore viene sottratto
+        al valore del mostro: la differenza è il numero di danni che il giocatore
+        subisce.
+      </li>
+      <li>
+        <strong>Cuori — Pozioni:</strong>
+        ripristinano Salute in misura pari al loro valore, senza poter superare
+        20 punti.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3. La Stanza</h2>
+
+    <p>
+      All’inizio del primo turno, e di ogni turno successivo, si pescano carte
+      dal Dungeon finché sul tavolo ci sono <strong>quattro carte a faccia in su</strong>.
+      Queste quattro carte costituiscono la <strong>Stanza</strong>.
+    </p>
+
+    <p>
+      Quando la Stanza è formata, prima di risolvere qualsiasi carta si decide
+      se affrontarla oppure evitarla.
+    </p>
+
+    <h3>Affrontare la Stanza</h3>
+    <p>
+      Se si affronta la Stanza, si scelgono e si risolvono <strong>tre delle quattro
+      carte</strong>, una alla volta e nell’ordine desiderato.
+      La quarta carta rimane scoperta sul tavolo e diventa parte della Stanza
+      del turno successivo. Al turno successivo si aggiungono tre nuove carte,
+      fino ad avere nuovamente quattro carte.
+    </p>
+
+    <p class="important">
+      È possibile scegliere liberamente l’ordine in cui risolvere le tre carte.
+      Questa scelta è spesso fondamentale per sfruttare al meglio armi e pozioni.
+    </p>
+
+    <h3>Evitare la Stanza</h3>
+    <p>
+      Prima di risolvere qualsiasi carta della Stanza, si può scegliere di
+      <strong>evitarla</strong>. In questo caso si raccolgono tutte e quattro le
+      carte e si mettono in fondo al Dungeon, senza risolverle.
+    </p>
+    <p>
+      È possibile evitare tutte le Stanze che si desidera, ma
+      <strong>non è possibile evitare due Stanze consecutive</strong>.
+      Dopo aver evitato una Stanza, la Stanza successiva deve quindi essere affrontata.
+    </p>
+  </section>
+
+  <section>
+    <h2>4. Impugnare un’arma</h2>
+
+    <p>
+      Quando si risolve una carta <strong>Quadri</strong>, l’arma deve essere
+      impugnata. Non è possibile conservarla senza impugnarla.
+    </p>
+
+    <p>
+      L’arma viene messa scoperta nell’area dell’arma impugnata.
+      Se si possiede già un’arma, la nuova arma la sostituisce:
+      <strong>l’arma precedente e tutti i mostri che erano stati sconfitti
+      con essa vengono scartati</strong>.
+    </p>
+
+    <p>
+      Una nuova arma può essere usata contro qualsiasi mostro. Dopo che l’arma
+      è stata usata per sconfiggere un mostro, però, la sua efficacia è soggetta
+      a una limitazione: può essere usata soltanto contro mostri di valore
+      <strong>strettamente inferiore</strong> a quello dell’ultimo mostro
+      sconfitto con quell’arma.
+    </p>
+
+    <p class="important">
+      Il limite riguarda soltanto <strong>quali mostri possono essere affrontati
+      con l’arma</strong>. Il valore dell’arma continua a ridurre il danno nello
+      stesso modo. Se l’arma non può essere usata contro un determinato mostro,
+      non viene scartata: si può combattere quel mostro a mani nude e conservare
+      l’arma per un mostro successivo di valore inferiore.
+    </p>
+  </section>
+
+  <section>
+    <h2>5. Combattere i Mostri</h2>
+
+    <h3>A mani nude</h3>
+    <p>
+      Si può sempre scegliere di combattere un mostro a mani nude.
+      Il mostro viene sconfitto e scartato, ma infligge al giocatore un numero
+      di danni pari al proprio valore. Questi danni vengono sottratti dalla
+      Salute.
+    </p>
+
+    <h3>Con un’arma</h3>
+    <p>
+      Se l’arma impugnata può essere usata contro quel mostro, si può
+      combattere con l’arma. Il mostro viene comunque sconfitto e scartato, ma
+      l’arma riduce i danni che il mostro infligge: si sottrae il valore dell’arma
+      al valore del mostro. La differenza è il danno subito dal giocatore.
+      Se il risultato è negativo, il danno è zero.
+    </p>
+    <p>
+      Il mostro sconfitto viene poi messo sopra l’arma. I mostri sconfitti con
+      un’arma restano associati a quell’arma finché non viene sostituita.
+    </p>
+  </section>
+
+  <section>
+    <h2>6. Usare le Pozioni</h2>
+
+    <p>
+      Quando si risolve una carta <strong>Cuori</strong>, si può bere la pozione.
+      La Salute aumenta di un numero pari al valore della carta, senza poter
+      superare 20.
+    </p>
+
+    <p class="important">
+      <strong>Durante ogni turno si possono bere tutte le pozioni che si desidera,
+      ma soltanto la prima pozione bevuta ha effetto.</strong>
+      Tutte le pozioni successive possono essere comunque risolte e vengono
+      semplicemente scartate senza ripristinare Salute.
+    </p>
+
+    <p>
+      Questo significa che una seconda pozione nello stesso turno non deve essere
+      ignorata o conservata: può essere scelta e risolta normalmente, ma non
+      produce alcun effetto sulla Salute.
+    </p>
+  </section>
+
+  <section>
+    <h2>7. Esempi</h2>
+
+    <div class="example">
+      <div class="example-title">Esempio 1 — Un’arma riduce completamente il danno</div>
+      <div class="cards">
+        <img class="card-example" src="cards/quadri_5.png" alt="5 di Quadri">
+        <span class="arrow">→</span>
+        <img class="card-example" src="cards/picche_3.png" alt="3 di Picche">
+      </div>
+      <p>
+        Un’arma di valore 5 viene usata contro un mostro di valore 3.
+        Il mostro viene sconfitto, ma il suo danno viene completamente annullato
+        dall’arma.
+      </p>
+      <p class="calculation">3 danni − 5 di arma = 0 danni subiti</p>
+      <p class="note">
+        Il mostro viene sconfitto e viene messo sopra l’arma. Il valore dell’arma
+        continua a essere 5.
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="example-title">Esempio 2 — Un’arma riduce il danno</div>
+      <div class="cards">
+        <img class="card-example" src="cards/quadri_5.png" alt="5 di Quadri">
+        <span class="arrow">→</span>
+        <img class="card-example" src="cards/picche_j.png" alt="Fante di Picche">
+      </div>
+      <p>
+        Un’arma di valore 5 viene usata contro un Fante, che vale 11.
+        Il Fante viene sconfitto, ma infliggerebbe 11 danni senza protezione.
+        L’arma ne riduce 5.
+      </p>
+      <p class="calculation">11 danni − 5 di arma = 6 danni subiti</p>
+      <p class="note">
+        Si perdono 6 punti Salute. Il Fante viene poi messo sopra l’arma.
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="example-title">Esempio 3 — L’arma si indebolisce dopo ogni vittoria</div>
+      <div class="cards">
+        <img class="card-example" src="cards/quadri_5.png" alt="5 di Quadri">
+        <span class="arrow">→</span>
+        <img class="card-example" src="cards/picche_q.png" alt="Donna di Picche">
+        <span class="arrow">→</span>
+        <img class="card-example" src="cards/picche_6.png" alt="6 di Picche">
+      </div>
+      <p>
+        Un’arma di valore 5 sconfigge prima una Donna, che vale 12.
+        Dopo questa vittoria può essere usata contro mostri di valore
+        strettamente inferiore a 12. Un 6, quindi, può essere affrontato con l’arma.
+      </p>
+      <p class="calculation">12 → 6 &nbsp;✓</p>
+    </div>
+
+    <div class="example">
+      <div class="example-title">Esempio 4 — Un mostro troppo forte va affrontato a mani nude</div>
+      <div class="cards">
+        <img class="card-example" src="cards/quadri_5.png" alt="5 di Quadri">
+        <span class="arrow">→</span>
+        <img class="card-example" src="cards/picche_6.png" alt="6 di Picche">
+        <span class="arrow">→</span>
+        <img class="card-example" src="cards/picche_q.png" alt="Donna di Picche">
+      </div>
+      <p>
+        Se la stessa arma ha appena sconfitto un 6, non può essere usata contro
+        una Donna (12). La Donna deve essere affrontata a mani nude.
+      </p>
+      <p class="calculation">6 → 12 &nbsp;✕</p>
+      <p class="note">
+        L’arma non viene scartata: resta impugnata e può essere usata contro
+        un mostro di valore inferiore a 6.
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="example-title">Esempio 5 — Un valore uguale non è sufficiente</div>
+      <div class="cards">
+        <img class="card-example" src="cards/quadri_5.png" alt="5 di Quadri">
+        <span class="arrow">→</span>
+        <img class="card-example" src="cards/picche_6.png" alt="6 di Picche">
+        <span class="arrow">→</span>
+        <img class="card-example" src="cards/fiori_6.png" alt="6 di Fiori">
+      </div>
+      <p>
+        Dopo aver sconfitto un 6 con l’arma, non è possibile usare la stessa arma
+        contro un altro 6. Il valore del nuovo mostro deve essere
+        <strong>strettamente inferiore</strong> a 6.
+      </p>
+      <p class="calculation">6 → 6 &nbsp;✕</p>
+    </div>
+
+    <div class="example">
+      <div class="example-title">Esempio 6 — Più pozioni nello stesso turno</div>
+      <div class="cards">
+        <img class="card-example" src="cards/cuori_9.png" alt="9 di Cuori">
+        <span class="arrow">→</span>
+        <img class="card-example" src="cards/cuori_5.png" alt="5 di Cuori">
+      </div>
+      <p>
+        Con 14 punti Salute si può bere prima il 9 di Cuori e salire a 20.
+        Se nello stesso turno si beve anche il 5 di Cuori, la seconda pozione
+        viene comunque risolta e scartata, ma non produce alcun effetto.
+      </p>
+      <p class="calculation">14 → 20 → 20</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>8. Fine della partita e punteggio</h2>
+    <p>
+      La partita termina quando la Salute raggiunge 0 oppure quando viene
+      attraversato l’intero Dungeon.
+    </p>
+    <p>
+      Se la Salute raggiunge 0, si considerano tutti i mostri ancora presenti
+      nel Dungeon e si somma il loro valore. Il punteggio è questa somma con
+      segno negativo.
+    </p>
+    <p>
+      Se si attraversa l’intero Dungeon, il punteggio è pari alla Salute finale.
+      Se la Salute è ancora 20 e l’ultima carta risolta è una pozione, al punteggio
+      si aggiunge anche il valore di quella pozione.
+    </p>
+  </section>
+
+</main>
+</body>
+</html>
