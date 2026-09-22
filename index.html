@@ -6,15 +6,6 @@
   <title>Scoundrel</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/style.css?v=1.1.1">
-  <style>
-    .kukis {
-      width: 100%;
-      margin: 90px 0 18px;
-      text-align: center;
-      font-size: 0.75rem;
-      opacity: 0.45;
-    }
-  </style>
 </head>
 <body>
 <main id="app">
@@ -38,8 +29,8 @@
 
   <p class="kukis">Kukis? Ya wants kukis, ya? No kukis here. Go find kukis elsewhere!</p>
 </main>
-<div id="combat-modal" class="modal" hidden>
-  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="combat-title">
+<dialog id="combat-modal" class="modal">
+  <div class="modal-box" aria-labelledby="combat-title">
     <h2 id="combat-title">Scegli un’azione</h2><div id="combat-card"></div><p id="action-description"></p>
     <button id="barehanded" type="button">Combatti a mani nude</button>
     <button id="weapon-fight" type="button">Usa l’arma</button>
@@ -47,7 +38,7 @@
     <button id="equip-weapon" type="button">Impugna</button>
     <button id="close-modal" type="button" class="secondary">Annulla</button>
   </div>
-</div>
+</dialog>
 <script type="module" src="js/ui.js?v=1.1.1"></script>
 </body>
 </html>
