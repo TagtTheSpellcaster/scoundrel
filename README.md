@@ -1,6 +1,6 @@
 # Scoundrel
 
-![Version](https://img.shields.io/badge/version-1.2.5-blue)
+![Version](https://img.shields.io/badge/version-1.3.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Platform](https://img.shields.io/badge/platform-browser-lightgrey)
 ![Built with HTML](https://img.shields.io/badge/built%20with-HTML%2FCSS%2FJavaScript-orange)
@@ -8,7 +8,7 @@
 
 Una versione web in italiano di **Scoundrel**, il gioco di carte solitario di Zach Gage e Kurt Bieg.
 
-**Versione: 1.2.5**
+**Versione: 1.3.0**
 
 ## Gioca
 
@@ -62,4 +62,4 @@ Il gioco **Scoundrel**, il suo nome, le sue regole e gli elementi grafici origin
 
 ---
 
-*Scoundrel 1.2.0*
+*Scoundrel 1.3.0*
