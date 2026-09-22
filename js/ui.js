@@ -64,50 +64,6 @@ function renderCard(card, { disabled = false, compact = false } = {}) {
   return button;
 }
 
-
-function fitGameToViewport() {
-  const main = $('#app');
-  if (!main || !roomEl.children.length) return;
-
-  // innerHeight è l'altezza effettiva del viewport del browser, esclusi
-  // tab, barra degli indirizzi e altri elementi dell'interfaccia del browser.
-  const viewportHeight = window.innerHeight;
-  const viewportWidth = window.innerWidth;
-
-  const mainStyle = getComputedStyle(main);
-  const innerMainWidth = main.clientWidth - parseFloat(mainStyle.paddingLeft) - parseFloat(mainStyle.paddingRight);
-  const horizontalGap = viewportWidth <= 650 ? 7 : 8;
-  const columns = viewportWidth <= 650 ? 2 : 4;
-  const widthByContainer = (innerMainWidth - horizontalGap * (columns - 1)) / columns;
-
-  // Il tooltip è sovrapposto al layout e non consuma spazio.
-  // Per dimensionare le carte usiamo esclusivamente le parti fisse del layout:
-  // tutto ciò che sta sopra la Stanza, più la sezione Arma/Ultimo mostro e
-  // il margine inferiore. In questo modo il calcolo non dipende dalla
-  // dimensione corrente delle carte e Nuova partita non può farle rimpicciolire
-  // progressivamente.
-  const lower = document.querySelector('.lower');
-  const mainRect = main.getBoundingClientRect();
-  const roomRect = roomEl.getBoundingClientRect();
-  const roomTop = roomRect.top - mainRect.top;
-  const lowerStyle = lower ? getComputedStyle(lower) : null;
-  const lowerHeight = lower ? lower.offsetHeight : 0;
-  const lowerMarginTop = lowerStyle ? parseFloat(lowerStyle.marginTop) : 0;
-  const mainPaddingBottom = parseFloat(mainStyle.paddingBottom);
-  const bottomSpace = lowerHeight + lowerMarginTop + mainPaddingBottom;
-  const verticalGaps = 4;
-  const availableRoomHeight = Math.max(80, viewportHeight - roomTop - bottomSpace - verticalGaps);
-
-  // Rapporto delle PNG: 243 × 400.
-  const widthByHeight = availableRoomHeight * (243 / 400);
-  const cardWidth = Math.max(58, Math.floor(Math.min(widthByContainer, widthByHeight)));
-  document.documentElement.style.setProperty('--room-card-width', `${cardWidth}px`);
-
-  // Il tooltip resta sovrapposto e parte subito sotto la Stanza.
-  const tooltipTop = roomEl.offsetTop + roomEl.offsetHeight + 8;
-  document.documentElement.style.setProperty('--card-info-top', `${tooltipTop}px`);
-}
-
 function render() {
   healthEl.textContent = `${game.health}/20`;
   const healthPercent = Math.max(0, Math.min(100, (game.health / game.startingHealth) * 100));
@@ -116,18 +72,40 @@ function render() {
   healthBarEl.style.setProperty('--health-color', `hsl(${healthHue} 65% 38%)`);
   healthBarEl.setAttribute('aria-valuenow', String(Math.max(0, Math.min(game.startingHealth, game.health))));
   healthBarEl.classList.toggle('health-dead', game.health <= 0);
+  
   dungeonCountEl.textContent = game.dungeon.length;
   turnEl.textContent = game.turn;
   messageTextEl.textContent = game.message;
+  
   const showDeathScore = game.status === 'lost' && game.score !== null;
   scoreMessageEl.hidden = !showDeathScore;
   scoreMessageEl.textContent = showDeathScore ? `Punteggio: ${game.score}` : '';
-  roomEl.replaceChildren(...game.room.map(card => renderCard(card)));
+
+  const currentCardIds = new Set(game.room.map(c => c.id));
+  
+  Array.from(roomEl.children).forEach(child => {
+    if (!currentCardIds.has(child.dataset.cardId)) {
+      child.remove();
+    }
+  });
+
+  game.room.forEach(card => {
+    let cardEl = roomEl.querySelector(`[data-card-id="${card.id}"]`);
+    if (!cardEl) {
+      cardEl = renderCard(card);
+      roomEl.append(cardEl);
+    }
+    cardEl.disabled = game.status !== 'playing';
+  });
 
   if (game.weapon) {
     weaponEl.replaceChildren(renderCard(game.weapon.card, { disabled: true, compact: true }));
-    const limit = document.createElement('small'); limit.textContent = game.weapon.lastMonsterValue == null ? 'Nessun limite' : `Prossimo mostro di valore < ${game.weapon.lastMonsterValue}`; weaponEl.append(limit);
-  } else weaponEl.innerHTML = '<div class="empty">Nessuna</div>';
+    const limit = document.createElement('small'); 
+    limit.textContent = game.weapon.lastMonsterValue == null ? 'Nessun limite' : `< ${game.weapon.lastMonsterValue}`; 
+    weaponEl.append(limit);
+  } else {
+    weaponEl.innerHTML = '<div class="empty">Nessuna</div>';
+  }
 
   const lastMonster = game.weapon?.monsters?.at(-1);
   if (lastMonster) {
@@ -137,7 +115,6 @@ function render() {
   }
 
   avoidBtn.disabled = !game.canAvoid;
-  requestAnimationFrame(fitGameToViewport);
 }
 
 function handleCardClick(card) {
@@ -184,10 +161,13 @@ function openCardActionModal(card) {
   }
 
   modal.dataset.cardId = card.id;
-  modal.hidden = false;
+  modal.showModal();
 }
 
-function closeModal() { modal.hidden = true; delete modal.dataset.cardId; }
+function closeModal() { 
+  modal.close(); 
+  delete modal.dataset.cardId; 
+}
 
 function playModalCard(method = null) {
   const id = modal.dataset.cardId;
@@ -203,6 +183,5 @@ equipBtn.addEventListener('click', () => playModalCard());
 closeModalBtn.addEventListener('click', closeModal);
 avoidBtn.addEventListener('click', () => { game.avoidRoom(); render(); });
 newGameBtn.addEventListener('click', () => { game.reset(); closeModal(); hideCardInfo(); render(); });
-render();
 
-window.addEventListener('resize', () => requestAnimationFrame(fitGameToViewport));
+render();
